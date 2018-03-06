@@ -34,10 +34,10 @@ The [MCP](http://tron.wikia.com/wiki/Master_Control_Program) (Master Control Pro
 
 The MCP has several commands that can be run.
 
-	- discover
-	- dispatch
-	- execute
-	- exit
+- discover
+- dispatch
+- execute
+- exit
 
 
 // EOF
