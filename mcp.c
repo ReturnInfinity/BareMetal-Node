@@ -39,7 +39,7 @@ unsigned char dst_broadcast[6] = {0xff, 0xff, 0xff, 0xff, 0xff, 0xff};
 unsigned char node_ID[maxnodes][7];
 unsigned short node_Speed[maxnodes];
 unsigned short node_NumCores[maxnodes];
-unsigned short node_Memory[maxnodes];
+unsigned int node_Memory[maxnodes];
 unsigned int node_HDDSize[maxnodes];
 unsigned long long node_Result[maxnodes];
 unsigned char wordcount;
@@ -69,7 +69,7 @@ FILE *file;
 int main(int argc, char *argv[])
 {
 	printf("\nMaster Control Program for BareMetal Node v0.1\n");
-	printf("© 2017 Return Infinity, Inc.\n\n");
+	printf("© 2018 Return Infinity, Inc.\n\n");
 
 	/* first argument needs to be a NIC */
 	if (argc < 2)
@@ -174,8 +174,8 @@ int main(int argc, char *argv[])
 					node_ID[nodes][5] = buffer[11];
 					memcpy(&node_NumCores[nodes], &buffer[16], 2);
 					memcpy(&node_Speed[nodes], &buffer[18], 2);
-					memcpy(&node_Memory[nodes], &buffer[20], 2);
-					memcpy(&node_HDDSize[nodes], &buffer[22], 4);
+					memcpy(&node_Memory[nodes], &buffer[20], 4);
+					memcpy(&node_HDDSize[nodes], &buffer[24], 4);
 					nodes++;
 					printf("\nID %02d - MAC %02X:%02X:%02X:%02X:%02X:%02X - %d Cores at %d MHz, %d MiB RAM, %d MiB HDD", nodes, buffer[6], buffer[7], buffer[8], buffer[9], buffer[10], buffer[11], node_NumCores[nodes-1], node_Speed[nodes-1], node_Memory[nodes-1], node_HDDSize[nodes-1]);
 					fflush(stdout);
@@ -232,7 +232,7 @@ int main(int argc, char *argv[])
 					fseek(file, 0, SEEK_END);
 					filesize = ftell(file);
 					rewind(file);
-					memlocation = 0xFFFF800000200000;
+					memlocation = 0xFFFF800000000000;
 					fileoffset = 0;
 
 					if (broadcastflag == 0)

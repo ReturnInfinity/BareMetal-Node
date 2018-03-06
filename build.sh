@@ -1,5 +1,6 @@
 #!/bin/bash
 
+cp interrupt.asm src/BareMetal-kernel/src/x86-64/
 cd os
 cd Pure64
 ./build.sh
