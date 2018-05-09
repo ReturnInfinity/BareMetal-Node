@@ -7,8 +7,8 @@ cd Pure64/src/arch/x86_64/
 cp pure64.sys ../../../../..
 cd bootsectors
 ./build.sh
-cp pxestart.sys ../../../../..
-cd ../../../..
+cp pxestart.sys ../../../../../..
+cd ../../../../..
 cd BareMetal-kernel
 ./build_x86-64.sh
 cp kernel.sys ../..
